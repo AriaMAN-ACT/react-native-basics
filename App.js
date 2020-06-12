@@ -11,10 +11,14 @@ const App = () => {
         setGoals([...goals, {value: goal, key: Math.random().toString()}]);
     };
 
+    const onDelete = (key) => {
+        setGoals(goals.filter(goal => goal.key !== key));
+    };
+
     return (
         <View style={styles.container}>
             <GoalInputBox addOnPass={addOnPress}/>
-            <GoalList goals={goals}/>
+            <GoalList goals={goals} onDelete={onDelete}/>
         </View>
     );
 };
